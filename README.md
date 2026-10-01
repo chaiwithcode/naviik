@@ -8,9 +8,9 @@ https://chaiwithcode.github.io/naviik/ through GitHub Pages from the `main` bran
 - `support/` and `privacy/`: existing public support and privacy pages.
 - `sitemap.xml`: canonical public page URLs.
 
-The download section says “coming soon”. When the App Store listing is live,
-replace the main CTA and release-status copy with its verified public link.
-Keep feature descriptions and screenshots aligned with the shipped app.
+The main download button links to the official App Store page at
+https://apps.apple.com/app/id6818059023. Keep the link, feature descriptions
+and screenshots aligned with the shipped app.
 
 No JavaScript, cookies, analytics scripts, third-party fonts or build step are needed.
 Local preview: `python3 -m http.server 8765`.
