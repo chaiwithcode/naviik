@@ -1,1 +1,684 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Naviik: Smart TV Remote | Naviik</title><style>body{margin:0;background:#0b1020;color:#e8edf8;font:17px/1.7 system-ui,sans-serif}main{max-width:780px;margin:auto;padding:64px 24px}a{color:#72d8ff}h1{font-size:42px;line-height:1.15}h2{margin-top:36px;font-size:23px}nav{display:flex;gap:24px}small{color:#aab6cf}.brand{color:#b8a2ff;font-weight:700;letter-spacing:.06em}</style></head><body><main><p class="brand">NAVIIK · CHAIWITHCODE</p><nav><a href="/naviik/support/">Support</a><a href="/naviik/privacy/">Privacy</a></nav><h1>Naviik: Smart TV Remote</h1><p>A remote for compatible Google TV and Android TV devices.</p><p><a href="support/">Setup and support</a> · <a href="privacy/">Privacy policy</a></p></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Naviik: Smart TV Remote</title>
+    <meta name="title" content="Naviik: Smart TV Remote">
+    <meta name="description" content="Your Smarter TV Companion. Control your Google TV or Android TV right from your iPhone or iPad over Wi-Fi.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chaiwithcode.github.io/naviik/">
+    <meta property="og:title" content="Naviik: Smart TV Remote">
+    <meta property="og:description" content="Your Smarter TV Companion. Control your Google TV or Android TV right from your iPhone or iPad over Wi-Fi.">
+    <meta property="og:image" content="https://chaiwithcode.github.io/naviik/assets/og-card.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Naviik — Your Smarter TV Companion">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://chaiwithcode.github.io/naviik/">
+    <meta property="twitter:title" content="Naviik: Smart TV Remote">
+    <meta property="twitter:description" content="Your Smarter TV Companion. Control your Google TV or Android TV right from your iPhone or iPad over Wi-Fi.">
+    <meta property="twitter:image" content="https://chaiwithcode.github.io/naviik/assets/og-card.png">
+
+    <link rel="canonical" href="https://chaiwithcode.github.io/naviik/">
+    <link rel="icon" href="assets/app-icon.png" type="image/png">
+
+    <style>
+        :root {
+            --bg-lavender: #f2eff9;
+            --bg-white: #ffffff;
+            --text-ink: #1a191d;
+            --text-muted: #5a5860;
+            --accent-purple: #6a4c93;
+            --accent-hover: #553c75;
+            --card-border: rgba(106, 76, 147, 0.1);
+            --font-sys: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* Reset & Base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: var(--font-sys);
+            background-color: var(--bg-lavender);
+            color: var(--text-ink);
+            line-height: 1.6;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--accent-purple);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Accessibility */
+        *:focus-visible {
+            outline: 3px solid var(--accent-purple);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem; }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        p { font-size: 1.125rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+        /* Layout & Components */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-purple);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 99px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 14px rgba(106, 76, 147, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(106, 76, 147, 0.4);
+        }
+
+        /* Header */
+        header {
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            background: rgba(242, 239, 249, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-ink);
+        }
+
+        .logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-ink);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: flex; flex-wrap: wrap; gap: 1rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 4rem;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 540px;
+        }
+
+        .tagline {
+            color: var(--accent-purple);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* CSS Phone Frame */
+        .phone-showcase {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-frame {
+            width: 320px;
+            max-width: 100%;
+            background-color: var(--bg-white);
+            border: 14px solid #111;
+            border-radius: 48px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            z-index: 2;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background-color: #111;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            background-color: var(--bg-lavender);
+        }
+
+        .frame-shadow {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            height: 100%;
+            background: var(--accent-purple);
+            filter: blur(80px);
+            opacity: 0.2;
+            z-index: 1;
+            border-radius: 50%;
+        }
+
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            .hero-text {
+                margin: 0 auto;
+            }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background-color: var(--bg-white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-lavender);
+            padding: 2.5rem 2rem;
+            border-radius: 24px;
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--accent-purple);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Showcase Section (Shortcuts) */
+        .showcase {
+            padding: 6rem 0;
+            background-color: var(--bg-lavender);
+        }
+
+        .showcase-flex {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .showcase-flex:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        @media (max-width: 992px) {
+            .showcase-flex, .showcase-flex:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Setup Section */
+        .setup {
+            padding: 6rem 0;
+            background-color: var(--bg-white);
+        }
+
+        .setup-steps {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            background: var(--bg-lavender);
+            padding: 2rem;
+            border-radius: 24px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            background: var(--accent-purple);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .step-content h3 {
+            margin-bottom: 0.25rem;
+        }
+
+        .step-content p {
+            margin-bottom: 0;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 0;
+            background-color: var(--bg-lavender);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        details {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--card-border);
+        }
+
+        summary {
+            font-size: 1.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none; /* Hide default arrow */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            color: var(--accent-purple);
+            font-size: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        details[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        details p {
+            margin-top: 1rem;
+            margin-bottom: 0;
+            padding-top: 1rem;
+            border-top: 1px solid var(--bg-lavender);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-white);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: var(--text-ink);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-purple);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--bg-lavender);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        .skip-link { position:absolute;left:16px;top:-80px;z-index:1000;background:white;padding:12px;color:var(--text-ink); }
+        .skip-link:focus { top:16px; }
+        :focus-visible { outline:3px solid var(--accent-purple); outline-offset:5px; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation:none!important;transition:none!important;scroll-behavior:auto!important; } }
+        @media (max-width:480px) { .nav-inner { flex-wrap:wrap;gap:12px;justify-content:center; } .nav-links { flex-wrap:wrap;gap:16px;justify-content:center; } .footer-links a { overflow-wrap:anywhere; } }
+        .release-note { font-size:.85rem!important; margin-top:1.25rem; }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header>
+        <div class="container nav-inner">
+            <a href="./" class="logo">
+                <img src="assets/app-icon.png" alt="Naviik App Icon">
+                Naviik
+            </a>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="#features">Features</a>
+                <a href="#shortcuts">Shortcuts</a>
+                <a href="#faq">FAQ</a>
+                <a href="#setup" class="btn" style="padding: 0.5rem 1.25rem; font-size: 1rem;">Setup</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <span class="tagline">Your Smarter TV Companion</span>
+                    <h1>Your TV.<br>Your way.</h1>
+                    <p>Control your Google TV or Android TV right from your iPhone or iPad. Enjoy directional navigation, fast keyboard input, and instant app launching—all over your local Wi-Fi.</p>
+                    <a href="#setup" class="btn">Get ready for Naviik <span aria-hidden="true">↗</span></a>
+                    <p class="release-note">Coming soon for iPhone &amp; iPad · Google TV &amp; Android TV</p>
+                </div>
+                <div class="phone-showcase">
+                    <div class="frame-shadow"></div>
+                    <div class="phone-frame">
+
+                        <img width="1320" height="2868" fetchpriority="high" src="assets/remote.png" alt="Naviik Remote Interface displaying directional pad, volume, and playback controls" class="phone-screen" style="object-position: top;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Everything you need.</h2>
+                    <p>Naviik brings all the essential controls to your mobile device, making your TV experience smoother than ever.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">↑</div>
+                        <h3>Directional Navigation</h3>
+                        <p>Navigate with familiar directional controls, adjust the volume, and pause or skip playback.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">Aa</div>
+                        <h3>Voice & Keyboard</h3>
+                        <p>Skip the clunky on-screen keyboard. Type passwords and search queries effortlessly, or use TV voice input.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">❖</div>
+                        <h3>App Quick Launch</h3>
+                        <p>Keep your favorite supported apps a tap away. Customize quick launch for apps installed on your TV.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Paired Devices</h3>
+                        <p>Seamlessly switch between multiple Google TV and Android TV devices on your network from a single app.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Showcase: Siri Shortcuts -->
+        <section id="shortcuts" class="showcase">
+            <div class="container showcase-flex">
+                <div class="hero-text">
+                    <h2>Your favorites, a tap away.</h2>
+                    <p>Choose which supported TV apps appear on your remote and arrange your favorites. You can also use Naviik’s app shortcuts with Siri or the Shortcuts app.</p>
+                    <p><em>"Hey Siri, open YouTube on TV with Naviik."</em></p>
+                </div>
+                <div class="phone-showcase">
+                    <div class="phone-frame">
+
+                        <img loading="lazy" width="1320" height="2868" src="assets/quick-launch.png" alt="Naviik Quick Launch settings showing favorite TV apps" class="phone-screen">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Setup/CTA -->
+        <section id="setup" class="setup">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Get ready for Naviik</h2>
+                    <p>The app is currently being prepared for release. Once available, you can pair your TV in three steps.</p>
+                </div>
+                <div class="setup-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Connect to Wi-Fi</h3>
+                            <p>Ensure your iPhone or iPad is connected to the exact same Wi-Fi network as your Google TV or Android TV.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Select your TV</h3>
+                            <p>Open Naviik. Allow local network access, scan for compatible TVs, and select yours.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Enter the pairing code</h3>
+                            <p>A secure pairing code will appear on your TV screen. Type it into Naviik, and you are ready to go.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                <div class="faq-list">
+                    <details>
+                        <summary>Which TVs are supported?</summary>
+                        <p>Naviik supports devices running <strong>Google TV</strong> and <strong>Android TV</strong>. Compatibility depends on your TV’s Android TV remote service and network settings. Your phone and TV must be on the same local network. <br><br><em>Note: Naviik does not support Samsung (Tizen), LG (webOS), Roku, or Apple TV devices.</em></p>
+                    </details>
+                    <details>
+                        <summary>Is the app available to download?</summary>
+                        <p>Not quite yet! Naviik is currently being prepared for its initial release. Check back soon for availability.</p>
+                    </details>
+                    <details>
+                        <summary>Do I need an iPhone with an IR blaster?</summary>
+                        <p>No. Naviik communicates with your TV securely over your local Wi-Fi network. No line-of-sight or infrared hardware is required.</p>
+                    </details>
+                    <details>
+                        <summary>Can I stream the Apple TV app to my Google TV?</summary>
+                        <p>Naviik can launch the Apple TV streaming app if it is installed on your Google TV device, but Naviik is a remote control, not a media casting tool.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="./" class="logo" style="margin-bottom: 1rem; display: inline-flex;">
+                        Naviik
+                    </a>
+                    <p style="font-size: 1rem;">Your Smarter TV Companion.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy/">Privacy Policy</a></li>
+                        <li><a href="support/">Setup & Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:support.chaiwithcode@gmail.com">support.chaiwithcode@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 ChaiWithCode. All rights reserved. Google TV and Android TV are trademarks of Google LLC.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f2eff9" />
+      <stop offset="100%" stop-color="#e3dcf1" />
+    </linearGradient>
+    
+    <!-- Accent Gradient for TV Shape -->
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8a61c2" />
+      <stop offset="100%" stop-color="#6a4c93" />
+    </linearGradient>
+
+    <!-- Drop Shadow for TV Shape -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="15" stdDeviation="15" flood-color="#6a4c93" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)" />
+
+  <!-- Abstract TV & Remote Shapes -->
+  <g filter="url(#shadow)">
+    <!-- Main TV Screen -->
+    <rect x="420" y="340" width="360" height="220" rx="24" fill="none" stroke="url(#accentGrad)" stroke-width="16" />
+    <!-- TV Stand -->
+    <path d="M 520 560 L 540 600 L 660 600 L 680 560" fill="none" stroke="url(#accentGrad)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Minimal UI Element inside TV (App boxes) -->
+    <rect x="460" y="380" width="80" height="50" rx="12" fill="url(#accentGrad)" opacity="0.4" />
+    <rect x="560" y="380" width="80" height="50" rx="12" fill="url(#accentGrad)" opacity="0.4" />
+    <rect x="660" y="380" width="80" height="50" rx="12" fill="url(#accentGrad)" opacity="0.4" />
+    <!-- D-Pad indicator -->
+    <circle cx="600" cy="485" r="30" fill="none" stroke="url(#accentGrad)" stroke-width="8" opacity="0.8" />
+    <circle cx="600" cy="485" r="8" fill="url(#accentGrad)" opacity="0.8" />
+  </g>
+
+  <!-- Typography -->
+  <text x="600" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="96" font-weight="bold" fill="#1a191d" text-anchor="middle" letter-spacing="-2">Naviik</text>
+  
+  <text x="600" y="280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="40" font-weight="500" fill="#6a4c93" text-anchor="middle" letter-spacing="1">Your Smarter TV Companion</text>
+</svg>
