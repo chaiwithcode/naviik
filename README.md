@@ -12,5 +12,6 @@ The App Store buttons are placeholders linking to the on-page download informati
 Replace `#download` with the verified App Store URL and update the coming-soon
 copy when the listing is ready.
 
-No JavaScript, cookies, analytics scripts, third-party fonts or build step are needed.
+A small local script keeps the navigation highlight in sync with clicks, URL anchors and scrolling.
+No cookies, analytics scripts, third-party fonts or build step are used.
 Local preview: `python3 -m http.server 8765`.

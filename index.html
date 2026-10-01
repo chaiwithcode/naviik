@@ -532,6 +532,12 @@
         footer .logo img { width:56px;height:56px;border-radius:14px; }
         @media(max-width:768px) { .logo img { width:64px;height:64px;border-radius:16px; } .hero-brand { justify-content:center; } .hero-app-icon { width:120px;height:120px;border-radius:26px; } }
         @media(max-width:480px) { header { padding:1rem 0; } .hero-brand-name { font-size:2rem; } section[id] { scroll-margin-top:170px; } }
+        .nav-links { gap:.5rem; }
+        .nav-links a { padding:.55rem 1rem;border-radius:999px;color:var(--text-ink);background:transparent;transition:background-color .2s,color .2s; }
+        .nav-links a:hover { background:rgba(115,87,246,.09);text-decoration:none; }
+        .nav-links a[aria-current="location"], .nav-links a[aria-current="location"]:hover { background:var(--accent-purple);color:#FFFFFF; }
+        a.btn, a.btn:visited, a.btn:hover, a.btn:focus-visible { color:#FFFFFF; }
+        @media(max-width:480px) { .nav-links { gap:.25rem; } .nav-links a { padding:.5rem .75rem; } }
     </style>
 </head>
 <body>
@@ -547,7 +553,7 @@
                 <a href="#features">Features</a>
                 <a href="#shortcuts">Shortcuts</a>
                 <a href="#faq">FAQ</a>
-                <a href="#setup" class="btn" style="padding: 0.5rem 1.25rem; font-size: 1rem;">Setup</a>
+                <a href="#setup">Setup</a>
             </nav>
         </div>
     </header>
@@ -784,5 +790,60 @@
         </div>
     </footer>
 
+<script>
+(() => {
+    const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+    const sections = links.map(link => document.querySelector(link.hash)).filter(Boolean)
+        .sort((a, b) => a.offsetTop - b.offsetTop);
+    const header = document.querySelector('header');
+    let scrolling = false;
+    let clickedUntil = 0;
+    let settleTimer;
+
+    function select(id) {
+        links.forEach(link => {
+            if (link.hash === '#' + id) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
+        });
+    }
+
+    function syncScroll() {
+        if (Date.now() < clickedUntil) return;
+        const threshold = header.getBoundingClientRect().height + 48;
+        let current = '';
+        sections.forEach(section => {
+            if (section.getBoundingClientRect().top <= threshold) current = section.id;
+        });
+        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) {
+            current = sections[sections.length - 1]?.id || current;
+        }
+        select(current);
+    }
+
+    function syncHash() {
+        const id = location.hash.slice(1);
+        // Download information belongs to the setup section.
+        select(id === 'download' ? 'setup' : id);
+        clickedUntil = Date.now() + 1200;
+        clearTimeout(settleTimer);
+        settleTimer = setTimeout(syncScroll, 1250);
+    }
+
+    links.forEach(link => link.addEventListener('click', () => {
+        select(link.hash.slice(1));
+        clickedUntil = Date.now() + 1200;
+        clearTimeout(settleTimer);
+        settleTimer = setTimeout(syncScroll, 1250);
+    }));
+    window.addEventListener('hashchange', syncHash);
+    window.addEventListener('scroll', () => {
+        if (scrolling) return;
+        scrolling = true;
+        requestAnimationFrame(() => { scrolling = false; syncScroll(); });
+    }, { passive: true });
+    window.addEventListener('resize', syncScroll);
+    if (location.hash) syncHash(); else syncScroll();
+})();
+</script>
 </body>
 </html>
