@@ -2,19 +2,21 @@
   <defs>
     <!-- Background Gradient -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f2eff9" />
-      <stop offset="100%" stop-color="#e3dcf1" />
+      <stop offset="0%" stop-color="#FAFAFC" />
+      <stop offset="100%" stop-color="#F2F4F7" />
     </linearGradient>
     
     <!-- Accent Gradient for TV Shape -->
     <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#8a61c2" />
-      <stop offset="100%" stop-color="#6a4c93" />
+      <stop offset="0%" stop-color="#FF4FD8" />
+      <stop offset="42%" stop-color="#7357F6" />
+      <stop offset="70%" stop-color="#5C7CFF" />
+      <stop offset="100%" stop-color="#00CFEF" />
     </linearGradient>
 
     <!-- Drop Shadow for TV Shape -->
     <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="15" stdDeviation="15" flood-color="#6a4c93" flood-opacity="0.15" />
+      <feDropShadow dx="0" dy="15" stdDeviation="15" flood-color="#7357F6" flood-opacity="0.15" />
     </filter>
   </defs>
 
@@ -37,7 +39,7 @@
   </g>
 
   <!-- Typography -->
-  <text x="600" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="96" font-weight="bold" fill="#1a191d" text-anchor="middle" letter-spacing="-2">Naviik</text>
+  <text x="600" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="96" font-weight="bold" fill="#272535" text-anchor="middle" letter-spacing="-2">Naviik</text>
   
-  <text x="600" y="280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="40" font-weight="500" fill="#6a4c93" text-anchor="middle" letter-spacing="1">Your Smarter TV Companion</text>
+  <text x="600" y="280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="40" font-weight="500" fill="#7357F6" text-anchor="middle" letter-spacing="1">Your Smarter TV Companion</text>
 </svg>

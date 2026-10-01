@@ -31,13 +31,18 @@
 
     <style>
         :root {
-            --bg-lavender: #f2eff9;
+            --bg-lavender: #FAFAFC;
+            --bg-grouped: #F2F4F7;
             --bg-white: #ffffff;
-            --text-ink: #1a191d;
-            --text-muted: #5a5860;
-            --accent-purple: #6a4c93;
-            --accent-hover: #553c75;
-            --card-border: rgba(106, 76, 147, 0.1);
+            --text-ink: #272535;
+            --text-muted: #595D6C;
+            --accent-purple: #7357F6;
+            --accent-blue: #5C7CFF;
+            --accent-magenta: #FF4FD8;
+            --accent-cyan: #00CFEF;
+            --brand-gradient: linear-gradient(110deg,var(--accent-magenta),#7C5CFA 42%,var(--accent-blue) 70%,var(--accent-cyan));
+            --accent-hover: #5C40D8;
+            --card-border: rgba(115, 87, 246, 0.1);
             --font-sys: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
@@ -129,7 +134,7 @@
             border: none;
             cursor: pointer;
             transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 14px rgba(106, 76, 147, 0.3);
+            box-shadow: 0 4px 14px rgba(115, 87, 246, 0.3);
         }
 
         .btn:hover {
@@ -137,7 +142,7 @@
             color: white;
             text-decoration: none;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(106, 76, 147, 0.4);
+            box-shadow: 0 6px 20px rgba(115, 87, 246, 0.4);
         }
 
         /* Header */
@@ -145,7 +150,7 @@
             padding: 1.5rem 0;
             position: sticky;
             top: 0;
-            background: rgba(242, 239, 249, 0.9);
+            background: rgba(250, 250, 252, 0.94);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             z-index: 100;
@@ -167,9 +172,9 @@
         }
 
         .logo img {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+            width: 76px;
+            height: 76px;
+            border-radius: 20px;
         }
 
         .nav-links {
@@ -500,7 +505,7 @@
         @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation:none!important;transition:none!important;scroll-behavior:auto!important; } }
         @media (max-width:480px) { .nav-inner { flex-wrap:wrap;gap:12px;justify-content:center; } .nav-links { flex-wrap:wrap;gap:16px;justify-content:center; } .footer-links a { overflow-wrap:anywhere; } }
         .release-note { font-size:.85rem!important; margin-top:1.25rem; }
-        .siri-section { background:linear-gradient(145deg,#e9e0f7,#f9f7fd); }
+        .siri-section { background:radial-gradient(ellipse at 12% 18%,rgba(255,79,216,.08),transparent 50%),radial-gradient(ellipse at 90% 80%,rgba(0,207,239,.10),transparent 55%),var(--bg-lavender); }
         .siri-capabilities { padding-left:1.3rem; margin:1.5rem 0; color:var(--text-muted); }
         .siri-capabilities li { margin:.75rem 0; }
         .siri-phrases { border-left:3px solid var(--accent-purple); padding:.75rem 1.25rem; margin:1.5rem 0; background:rgba(255,255,255,.65);border-radius:0 12px 12px 0; }
@@ -510,8 +515,23 @@
         .siri-figure figcaption { text-align:center;font-size:.8rem;color:var(--text-muted);margin-top:1.25rem; }
         .after-setup { padding:0 0 3rem;text-align:center; }
         .after-setup a { text-decoration:underline; }
-        section[id] { scroll-margin-top:110px; }
+        section[id] { scroll-margin-top:150px; }
         @media(max-width:768px) { .siri-figure { flex-basis:auto; } }
+        .hero { background:radial-gradient(ellipse at 10% 65%,rgba(255,79,216,.07),transparent 45%),radial-gradient(ellipse at 85% 35%,rgba(0,207,239,.09),transparent 50%),var(--bg-lavender); }
+        .hero-brand { display:flex;align-items:center;gap:1.25rem;margin-bottom:2rem; }
+        .hero-app-icon { width:144px;height:144px;border-radius:30px;box-shadow:0 12px 40px rgba(39,37,53,.09);flex-shrink:0; }
+        .hero-brand-name { display:block;font-size:2.5rem;font-weight:750;line-height:1.1;letter-spacing:-.04em; }
+        .hero-brand-detail { display:block;color:var(--text-muted);font-size:1rem;margin-top:.5rem; }
+        .feature-card { position:relative;overflow:hidden;background:var(--bg-white);box-shadow:0 6px 24px rgba(39,37,53,.035); }
+        .feature-card::before { content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--brand-gradient); }
+        .feature-icon { background:linear-gradient(135deg,var(--accent-purple),#5C40D8);box-shadow:0 5px 16px rgba(115,87,246,.18); }
+        .features { background:var(--bg-grouped); }
+        .phone-frame { border-color:#272535; }
+        .frame-shadow { background:var(--brand-gradient);opacity:.12; }
+        .siri-phrases { background:#FFFFFF; }
+        footer .logo img { width:56px;height:56px;border-radius:14px; }
+        @media(max-width:768px) { .logo img { width:64px;height:64px;border-radius:16px; } .hero-brand { justify-content:center; } .hero-app-icon { width:120px;height:120px;border-radius:26px; } }
+        @media(max-width:480px) { header { padding:1rem 0; } .hero-brand-name { font-size:2rem; } section[id] { scroll-margin-top:170px; } }
     </style>
 </head>
 <body>
@@ -537,6 +557,10 @@
         <section class="hero">
             <div class="container hero-grid">
                 <div class="hero-text">
+                    <div class="hero-brand">
+                        <img src="assets/app-icon.png?v=light" width="144" height="144" alt="Naviik light-mode app icon" class="hero-app-icon">
+                        <div><span class="hero-brand-name">Naviik</span><span class="hero-brand-detail">Smart TV Remote</span></div>
+                    </div>
                     <span class="tagline">Your Smarter TV Companion</span>
                     <h1>Your TV.<br>Your way.</h1>
                     <p>Control your Google TV or Android TV right from your iPhone or iPad. Enjoy directional navigation, fast keyboard input, and instant app launching—all over your local Wi-Fi.</p>
@@ -734,6 +758,7 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <a href="./" class="logo" style="margin-bottom: 1rem; display: inline-flex;">
+                        <img src="assets/app-icon.png?v=light" width="56" height="56" alt="" aria-hidden="true">
                         Naviik
                     </a>
                     <p style="font-size: 1rem;">Your Smarter TV Companion.</p>
