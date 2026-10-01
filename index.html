@@ -293,7 +293,7 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
             gap: 2rem;
         }
 
@@ -500,6 +500,18 @@
         @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation:none!important;transition:none!important;scroll-behavior:auto!important; } }
         @media (max-width:480px) { .nav-inner { flex-wrap:wrap;gap:12px;justify-content:center; } .nav-links { flex-wrap:wrap;gap:16px;justify-content:center; } .footer-links a { overflow-wrap:anywhere; } }
         .release-note { font-size:.85rem!important; margin-top:1.25rem; }
+        .siri-section { background:linear-gradient(145deg,#e9e0f7,#f9f7fd); }
+        .siri-capabilities { padding-left:1.3rem; margin:1.5rem 0; color:var(--text-muted); }
+        .siri-capabilities li { margin:.75rem 0; }
+        .siri-phrases { border-left:3px solid var(--accent-purple); padding:.75rem 1.25rem; margin:1.5rem 0; background:rgba(255,255,255,.65);border-radius:0 12px 12px 0; }
+        .siri-phrases p { font-weight:600; color:var(--accent-purple); font-size:1rem; margin:.5rem 0; }
+        .siri-note { font-size:.9rem!important; }
+        .siri-figure { flex:0 1 420px; max-width:100%; margin:0; }
+        .siri-figure figcaption { text-align:center;font-size:.8rem;color:var(--text-muted);margin-top:1.25rem; }
+        .after-setup { padding:0 0 3rem;text-align:center; }
+        .after-setup a { text-decoration:underline; }
+        section[id] { scroll-margin-top:110px; }
+        @media(max-width:768px) { .siri-figure { flex-basis:auto; } }
     </style>
 </head>
 <body>
@@ -545,36 +557,66 @@
         <section id="features" class="features">
             <div class="container">
                 <div class="section-header">
-                    <h2>Everything you need.</h2>
-                    <p>Naviik brings all the essential controls to your mobile device, making your TV experience smoother than ever.</p>
+                    <h2>Every control. One companion.</h2>
+                    <p>From everyday navigation to Siri routines, here’s what Naviik brings to your Google TV or Android TV.</p>
                 </div>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">↑</div>
-                        <h3>Directional Navigation</h3>
-                        <p>Navigate with familiar directional controls, adjust the volume, and pause or skip playback.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">Aa</div>
-                        <h3>Voice & Keyboard</h3>
-                        <p>Skip the clunky on-screen keyboard. Type passwords and search queries effortlessly, or use TV voice input.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">❖</div>
-                        <h3>App Quick Launch</h3>
-                        <p>Keep your favorite supported apps a tap away. Customize quick launch for apps installed on your TV.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📱</div>
-                        <h3>Paired Devices</h3>
-                        <p>Seamlessly switch between multiple Google TV and Android TV devices on your network from a single app.</p>
-                    </div>
-                </div>
+<div class="features-grid">
+  <div class="feature-card">
+    <div class="feature-icon" aria-hidden="true">↔</div>
+    <h3>Navigation</h3>
+    <p>Move around your TV with the directional pad, confirm a selection, go back, return home, or toggle standby.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon" aria-hidden="true">♪</div>
+    <h3>Volume & Mute</h3>
+    <p>Easily adjust the volume or mute your TV.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon" aria-hidden="true">▷</div>
+    <h3>Playback Controls</h3>
+    <p>Play or pause, rewind, and fast-forward with familiar media controls.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon" aria-hidden="true">◉</div>
+    <h3>Voice Input</h3>
+    <p>Tap the microphone and speak to your connected TV’s assistant when it supports voice input.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon" aria-hidden="true">Aa</div>
+    <h3>TV Keyboard</h3>
+    <p>Use your phone’s keyboard when your TV opens a supported text field.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon" aria-hidden="true">▦</div>
+    <h3>Quick Launch</h3>
+    <p>Choose your favorite supported apps and arrange their order. Apps must be installed on your TV.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon" aria-hidden="true">✦</div>
+    <h3>Siri & Shortcuts</h3>
+    <p>Use Siri or build Shortcuts routines to toggle power, mute and playback, adjust volume, or open supported apps.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon" aria-hidden="true">▣</div>
+    <h3>Saved TVs</h3>
+    <p>Quickly connect to saved paired TVs on the same local network.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon" aria-hidden="true">◐</div>
+    <h3>Your preferred feel</h3>
+    <p>Choose light, dark, or system appearance and turn haptic feedback on or off.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon" aria-hidden="true">⌁</div>
+    <h3>Pair over your local network</h3>
+    <p>Connect with the code shown on your TV, then send remote commands over the same local network.</p>
+  </div>
+</div>
             </div>
         </section>
 
-        <!-- Showcase: Siri Shortcuts -->
-        <section id="shortcuts" class="showcase">
+        <!-- Quick Launch showcase -->
+        <section id="quick-launch" class="showcase">
             <div class="container showcase-flex">
                 <div class="hero-text">
                     <h2>Your favorites, a tap away.</h2>
@@ -587,6 +629,36 @@
                         <img loading="lazy" width="1320" height="2868" src="assets/quick-launch.png" alt="Naviik Quick Launch settings showing favorite TV apps" class="phone-screen">
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Siri showcase -->
+        <section id="shortcuts" class="showcase siri-section">
+            <div class="container showcase-flex">
+                <div class="hero-text">
+                    <span class="tagline">Siri &amp; Shortcuts</span>
+                    <h2>A few words.<br>More control.</h2>
+                    <p>Ask Siri to control your paired TV, or add Naviik actions to a routine in the Shortcuts app.</p>
+                    <ul class="siri-capabilities">
+                        <li>Toggle TV power, mute, or playback.</li>
+                        <li>Increase or decrease the volume.</li>
+                        <li>Open Netflix, YouTube, Disney+, Prime Video, or the Apple TV streaming app.</li>
+                    </ul>
+                    <div class="siri-phrases">
+                        <p>“Toggle TV power with Naviik”</p>
+                        <p>“Open YouTube on TV with Naviik”</p>
+                    </div>
+                    <p class="siri-note">Pair your TV first and keep both devices on the same local network. Choose a Target TV in Shortcuts when you have more than one paired TV. Apps must be installed on your TV.</p>
+                    <a href="#setup" class="btn">Start with pairing <span aria-hidden="true">↗</span></a>
+                </div>
+                <figure class="siri-figure">
+                    <div class="phone-showcase">
+                        <div class="phone-frame">
+                            <img class="phone-screen" src="assets/siri-shortcuts.png" alt="Naviik App shortcuts screen showing playback and volume commands plus Siri phrases to open Netflix, YouTube, Disney+, Prime Video and Apple TV" width="1320" height="2868" loading="lazy">
+                        </div>
+                    </div>
+                    <figcaption>Real Naviik app screen · Siri controls and app shortcuts</figcaption>
+                </figure>
             </div>
         </section>
 
@@ -620,6 +692,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="after-setup">
+            <div class="container">
+                <p>Already paired? <a href="#shortcuts">Explore Siri shortcuts</a> or <a href="#quick-launch">make Quick Launch your own</a>.</p>
             </div>
         </section>
 
